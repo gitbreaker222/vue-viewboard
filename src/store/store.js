@@ -10,4 +10,6 @@ store.settings = settingsStore;
 
 if (process.env.NODE_ENV === "development") {
   window.store = store;
+  console.clear();
+  console.info('store:', store);
 }
