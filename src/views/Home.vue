@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <img alt="Vue logo" src="@/assets/logo.png" />
     <div class="">
       <input type="text" name="" value="" @change="setUrl" @input="setUrl" />
     </div>
