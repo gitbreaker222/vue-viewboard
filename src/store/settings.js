@@ -2,11 +2,11 @@ export const SET_URL = "SET_URL";
 
 export const settings = {
   state: {
-    url: ""
+    url: "",
   },
   mutations: {
     SET_URL(state, url) {
       state.url = url;
-    }
-  }
+    },
+  },
 };

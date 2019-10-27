@@ -19,13 +19,13 @@ export default {
   computed: {
     url() {
       return settings.state.url;
-    }
+    },
   },
   methods: {
     setUrl(event) {
       const { value } = event.currentTarget;
       settings.commit("SET_URL", value);
-    }
-  }
+    },
+  },
 };
 </script>
