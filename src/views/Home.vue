@@ -11,11 +11,13 @@
       />
     </div>
     <div class="">url: {{ url }}</div>
-    <Frame
+    <div class="frames">
+      <Frame
       v-for="frame in frames"
       v-bind:key="frame.id"
       v-bind:frame="frame"
-    />
+      />
+    </div>
   </div>
 </template>
 
@@ -46,3 +48,16 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+.frames {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.frames .frame {
+  margin: 1rem .5rem;
+}
+</style>

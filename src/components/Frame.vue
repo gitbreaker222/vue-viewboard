@@ -50,3 +50,11 @@ const component = {
 
 export default component;
 </script>
+
+<style scoped lang="scss">
+.frame {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+</style>
