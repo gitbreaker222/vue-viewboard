@@ -1,49 +1,46 @@
 <template>
-  <div class="frame"
+  <div
     v-if="frame"
-    >
-    <iframe
-      v-bind:id="`frame-${frame.id}`"
-      v-bind:src="url"
-      v-bind:width="frame.x"
-      v-bind:height="frame.y"
-      v-on:scroll="handleScroll"
-    ></iframe>
+    class="frame"
+  >
     <label for="frame-1">
       {{ frame.x }} x {{ frame.y }}
     </label>
+    <iframe
+      :id="`frame-${frame.id}`"
+      :src="url"
+      :width="frame.x"
+      :height="frame.y"
+      @load="handleEvent"
+    />
   </div>
-  <div class="frame"
-    v-else>
+  <div
+    v-else
+    class="frame"
+  >
     (no frame data)
   </div>
 </template>
 
 
 <script>
-// import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import { store } from "@/store/store";
 
-const { settings } = store;
 const component = {
   name: "Frame",
   props: {
     frame: Object,
   },
-  data: () => {
-    return {
-      url: settings.state.url,
-    }
-  },
-  // computed: mapState({
-  //   url: state => state.url
-  // }),
+  computed: mapState({
+    url: state => { return state.settings.url},
+  }),
   methods: {
     updateFrameX(evt) {
       console.log(evt);
     },
-    handleScroll(event) {
-      console.log(event);
+    handleEvent(event) {
+      console.log('##', event);
     },
   },
 }
@@ -55,6 +52,8 @@ export default component;
 .frame {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+}
+
+.frame iframe {
 }
 </style>

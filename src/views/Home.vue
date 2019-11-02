@@ -1,49 +1,55 @@
 <template>
   <div class="home">
-
     <div class="">
       <input
         type="text"
         name="url"
-        v-bind:value="url"
+        :value="url"
         @change="setUrl"
         @input="setUrl"
-      />
+      >
     </div>
-    <div class="">url: {{ url }}</div>
+    <div class="">
+      url: {{ url }}
+    </div>
     <div class="frames">
       <Frame
-      v-for="frame in frames"
-      v-bind:key="frame.id"
-      v-bind:frame="frame"
+        v-for="frame in frames"
+        :key="frame.id"
+        :frame="frame"
       />
     </div>
   </div>
 </template>
 
 <script>
-import { store } from "@/store/store";
+import { mapState } from 'vuex'
+import { store, SET_URL } from "@/store/store";
 import Frame from '@/components/Frame'
 
-const { settings } = store;
+window.qs = (x) => {
+  return document.querySelector(x)
+}
+
+const {settings} = store.state
 
 export default {
-  name: "home",
+  name: "Home",
   components: {
     Frame,
   },
-  computed: {
-    url() {
-      return settings.state.url;
+  computed: mapState({
+    url: (state) => {
+      return state.settings.url;
     },
-    frames() {
-      return settings.state.frames;
+    frames: (state ) => {
+      return state.settings.frames;
     },
-  },
+  }),
   methods: {
     setUrl(event) {
       const { value } = event.currentTarget;
-      settings.commit("SET_URL", value);
+      store.commit(SET_URL, value);
     },
   },
 };

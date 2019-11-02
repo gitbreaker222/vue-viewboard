@@ -1,4 +1,4 @@
-export const SET_URL = "SET_URL";
+import { SET_URL } from '@/store/store'
 
 export const settings = {
   state: {
