@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home flex-col">
     <div class="">
       <input
         type="text"
@@ -9,7 +9,7 @@
         @input="setUrl"
       >
     </div>
-    <div class="frames">
+    <div class="frames flex-col">
       <Frame
         v-for="frame in frames"
         :key="frame.id"
@@ -53,11 +53,22 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.home {
+  overflow: auto;
+}
+
 .frames {
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
   align-items: flex-start;
+  transform: scale(.5);
+  transform-origin: top left;
+  width: 200%;
+}
+@media (min-width: 50em) {
+  .frames {
+    justify-content: center;
+  }
 }
 
 .frames .frame {
