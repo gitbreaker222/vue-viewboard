@@ -66,7 +66,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$scale: .5;
+$scale: .75;
 
 .home {
   overflow: auto;
