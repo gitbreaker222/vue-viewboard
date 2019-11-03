@@ -9,9 +9,6 @@
         @input="setUrl"
       >
     </div>
-    <div class="">
-      url: {{ url }}
-    </div>
     <div class="frames">
       <Frame
         v-for="frame in frames"
