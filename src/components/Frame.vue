@@ -7,7 +7,7 @@
       {{ frame.x }} x {{ frame.y }}
     </label>
     <iframe
-      :id="`frame-${frame.x + frame.y}`"
+      :id="`frame-${'' + frame.x + frame.y}`"
       :src="url"
       :width="frame.x"
       :height="frame.y"

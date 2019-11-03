@@ -6,6 +6,8 @@ const isDevEnv = process.env.NODE_ENV === 'development'
 const isProdEnv = process.env.NODE_ENV === 'production'
 
 /* ACTIONS */
+export const RESTORE = 'RESTORE'
+/* MUTATIONS */
 export const SET_URL = 'SET_URL'
 
 
@@ -18,9 +20,14 @@ export const store = new Vuex.Store({
   strict: !isProdEnv,
   //plugins: isProdEnv ? [] : [createLogger()],
 })
+function initStore() {
+  store.dispatch(RESTORE)
+}
 
 if (isDevEnv) {
   window.store = store;
   console.clear();
   console.info('store:', store);
 }
+
+initStore()

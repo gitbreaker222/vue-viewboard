@@ -1,8 +1,8 @@
-import { SET_URL } from '@/store/store'
+import { RESTORE, SET_URL } from '@/store/store'
 
 export const settings = {
   state: {
-    url: "https://neutrinojs.org/",
+    url: '',
     frames: [
       {
         x: 300,
@@ -37,6 +37,14 @@ export const settings = {
   mutations: {
     SET_URL(state, url) {
       state.url = url;
+      localStorage.setItem('url', url)
+    },
+  },
+  actions: {
+    RESTORE (context) {
+      const url = localStorage.getItem('url')
+        || 'https://thebestmotherfucking.website/'
+      context.commit('SET_URL', url)
     },
   },
 };

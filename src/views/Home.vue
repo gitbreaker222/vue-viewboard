@@ -35,6 +35,11 @@ export default {
   components: {
     Frame,
   },
+  data() {
+    return {
+      timoutCount: 0,
+    }
+  },
   computed: mapState({
     url: (state) => {
       return state.settings.url;
@@ -46,13 +51,23 @@ export default {
   methods: {
     setUrl(event) {
       const { value } = event.currentTarget;
-      store.commit(SET_URL, value);
+      this.timoutCount += 1;
+      setTimeout(
+        this._setUrl,
+        444
+      )
+    },
+    _setUrl() {
+      this.timoutCount -= 1;
+      if (!timoutCount) store.commit(SET_URL, value);
     },
   },
 };
 </script>
 
 <style scoped lang="scss">
+$scale: .5;
+
 .home {
   overflow: auto;
 }
@@ -61,11 +76,11 @@ export default {
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
-  transform: scale(.5);
+  transform: scale($scale);
   transform-origin: top left;
-  width: 200%;
+  width: 100% * (1/$scale);
 }
-@media (min-width: 50em) {
+@media (min-width: 700px) {
   .frames {
     justify-content: center;
   }
