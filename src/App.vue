@@ -10,6 +10,9 @@
       <router-link to="/hello-vue">
         Hello Vue
       </router-link> |
+      <router-link to="/viewboard">
+        Viewport board
+      </router-link> |
       <router-link to="/about">
         About
       </router-link>
@@ -41,11 +44,11 @@ body, .flex-col {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  max-height: 100vh;
   padding: .5rem;
   overflow: hidden;
   background: #2c3c4c;
   color: #eee;
+  flex: 0 0 100vh;
 }
 
 #nav {
