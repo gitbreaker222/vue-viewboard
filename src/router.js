@@ -1,35 +1,29 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "@/views/Home";
+import { Viewboard} from "@/views/Viewboard";
 
 Vue.use(VueRouter);
+
+const VIEWBOARD = 'viewboard'
+const ABOUT = 'about'
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: Home,
+    redirect: `/${VIEWBOARD}`,
   },
   {
-    path: "/hello-vue",
-    name: "hello vue",
-    component: () =>
-      import(/* webpackChunkName: "hello-vue" */ "@/views/HelloVue.vue"),
-  },
-  {
-    path: "/viewboard",
+    path: `/${VIEWBOARD}`,
     name: "Viewport board",
-    component: () =>
-      import(
-        /* webpackChunkName: "viewboard" */ "@/views/Viewboard.vue"),
+    component: Viewboard,
   },
   {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ "@/views/About.vue"),
+    path: `/${ABOUT}`,
+    name: 'About',
+    component: () => import(
+      /* webpackChunkName: "about" */
+      "@/views/About.vue"
+    ),
   },
 ];
 

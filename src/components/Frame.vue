@@ -25,7 +25,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { store } from "@/store/store";
+//import { store } from "@/store/store";
 
 const component = {
   name: "Frame",
@@ -33,7 +33,7 @@ const component = {
     frame: Object,
   },
   computed: mapState({
-    url: state => { return state.settings.url},
+    url: state => state.settings.url,
   }),
   methods: {
     updateFrameX(evt) {

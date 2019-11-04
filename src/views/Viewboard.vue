@@ -24,11 +24,9 @@ import { mapState } from 'vuex'
 import { store, SET_URL } from "@/store/store";
 import Frame from '@/components/Frame'
 
-window.qs = (x) => {
-  return document.querySelector(x)
-}
+window.qs = (x) => document.querySelector(x)
 
-const {settings} = store.state
+// const {settings} = store.state
 
 export default {
   name: "Viewboard",
@@ -41,25 +39,23 @@ export default {
     }
   },
   computed: mapState({
-    url: (state) => {
-      return state.settings.url;
-    },
-    frames: (state ) => {
-      return state.settings.frames;
-    },
+    url: (state) => state.settings.url,
+    frames: (state ) => state.settings.frames,
   }),
   methods: {
     setUrl(event) {
       const { value } = event.currentTarget;
       this.timoutCount += 1;
       setTimeout(
-        this._setUrl,
+        () => {
+          this._setUrl(value)
+        },
         444
       )
     },
-    _setUrl() {
+    _setUrl(value) {
       this.timoutCount -= 1;
-      if (!timoutCount) store.commit(SET_URL, value);
+      if (!this.timoutCount) store.commit(SET_URL, value);
     },
   },
 };

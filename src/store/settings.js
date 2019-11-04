@@ -35,13 +35,13 @@ export const settings = {
     ],
   },
   mutations: {
-    SET_URL(state, url) {
+    [SET_URL](state, url) {
       state.url = url;
       localStorage.setItem('url', url)
     },
   },
   actions: {
-    RESTORE (context) {
+    [RESTORE](context) {
       const url = localStorage.getItem('url')
         || 'https://thebestmotherfucking.website/'
       context.commit('SET_URL', url)

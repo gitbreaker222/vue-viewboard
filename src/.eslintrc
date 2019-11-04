@@ -1,0 +1,28 @@
+{
+  "env": {
+    "node": true
+  },
+  "extends": ["esnext", "plugin:vue/recommended"],
+  "plugins": ["vue"],
+  "rules": {
+    "no-console": "warn",
+    "no-debugger": "error",
+    "comma-dangle": ["error", "always-multiline"],
+    "import/no-unresolved": "off",
+    "import/prefer-default-export": "off"
+  },
+  "parserOptions": {
+    "parser": "babel-eslint"
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/__tests__/*.{j,t}s?(x)",
+        "**/tests/unit/**/*.spec.{j,t}s?(x)"
+      ],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
+}
